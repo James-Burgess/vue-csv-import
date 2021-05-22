@@ -22,10 +22,13 @@
             fileRequired: 'A file is required',
             invalidMimeType: "Invalid file type"
         },
-        toggleHeaders: 'show my file headers for mapping',
+        toggleHeaders: 'File has headers',
         submitBtn: 'Submit',
         fieldColumn: 'Field',
-        csvColumn: 'Column'
+        csvColumn: 'Column',
+        requiredField: '*',
+        includeField: 'Include field',
+        excludeField: 'Exclude field'
     };
 
     const mapFields = function (fields) {
