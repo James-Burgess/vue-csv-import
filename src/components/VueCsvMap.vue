@@ -5,7 +5,25 @@
         :fields="VueCsvImportData.fields"
     >
         <template v-if="VueCsvImportData.firstSampleRow">
-            <table v-bind="$attrs">
+            <table>
+              <thead>
+                <tr>
+                  <td v-for="field in VueCsvImportData.firstSampleRow" :key="field">
+                    {{ field }}
+                    <select>
+                      <option v-for="field in dstFieldNames" :value="field.key" :key="field.key">{{ field.label }}</option>
+                    </select>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in VueCsvImportData.csvSample.slice(1)">
+                  <td v-for="item in row">{{item}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- <table v-bind="$attrs">
                 <thead v-if="!noThead">
                     <tr>
                         <th>{{ labels.fieldColumn }}</th>
@@ -32,7 +50,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </template>
     </slot>
 </template>
@@ -61,6 +79,15 @@
                 type: Boolean,
                 default: true
             }
+        },
+        computed: {
+          // a computed getter
+          dstFieldNames() {
+            let required = this.VueCsvImportData.fields
+
+
+            return [...required, {key: 99, label: "Extra"}]
+          }
         },
         setup(props) {
             const VueCsvImportData = inject('VueCsvImportData');
@@ -96,3 +123,10 @@
         },
     };
 </script>
+
+<style media="screen">
+
+table, th, td {
+border: 1px solid black;
+}
+</style>

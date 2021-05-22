@@ -22,7 +22,7 @@
             fileRequired: 'A file is required',
             invalidMimeType: "Invalid file type"
         },
-        toggleHeaders: 'File has headers',
+        toggleHeaders: 'show my file headers for mapping',
         submitBtn: 'Submit',
         fieldColumn: 'Field',
         csvColumn: 'Column'
